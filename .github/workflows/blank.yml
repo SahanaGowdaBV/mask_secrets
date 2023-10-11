@@ -6,7 +6,9 @@ jobs:
     steps:
       - id: init
         run: |
-          echo "::set-output name=the_secret::$((RANDOM))"
+          SECRETS=$((RANDOM))
+          echo "SECRETS=$SECRETS" | tee -a >> $GITHUB_OUTPUT
+          # echo "::set-output name=the_secret::$((RANDOM))"
       - id: sets-a-secret
         run: |
           local_secret="${{ steps.init.outputs.the_secret }}"
