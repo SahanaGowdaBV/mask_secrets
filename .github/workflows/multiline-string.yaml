@@ -9,9 +9,7 @@ jobs:
       - name: create string
         run: |
           MY_STRING=$(cat << EOF
-          first line
-          second line
-          third line
+          -----BEGIN RSA PRIVATE KEY-----\nMIIJKAIBAAKCAgEAnJp/tiqnu+7SJZ2l//rHCyPy53j3ac9hkU3taiBgi6anmZPk\nLH5dwa6+7u5jmqLrEIGIEWGUtpp9Kug3inJgil7FMxhwLt05hMdazS1X3fjQeRnC\ntVFIfjyQzzCsGA8gSxcNsPWHljVzrXA+QzPtdqBod5c/KohR6l702UxrLYRfwYKW
           EOF
           )
           MY_STRING="${MY_STRING//'%'/'%25'}"
