@@ -1,7 +1,9 @@
-on: 
-  workflow_dispatch:
+name: CI/CD 
+
+on: [ workflow_dispatch ]
+
 jobs:
-  my-job:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name:
