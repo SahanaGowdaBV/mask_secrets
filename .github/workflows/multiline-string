@@ -9,6 +9,7 @@ jobs:
       - name: my_string
         id: my_string
         run: |
+          echo "my world"
           MY_STRING=$(cat << EOF -----BEGIN RSA PRIVATE KEY-----\nMIIJKAIBAAKCAgEAnJp/tiqnu+7SJZ2l//rHCyPy53j3ac9hkU3taiBgi6anmZPk\nLH5dwa6+7u5jmqLrEIGIEWGUtpp9Kug3inJgil7FMxhwLt05hMdazS1X3fjQeRnC\ntVFIfjyQzzCsGA8gSxcNsPWHljVzrXA+QzPtdqBod5c/KohR6l702UxrLYRfwYKW\ EOF)
           MY_STRING="${MY_STRING//'%'/'%25'}"
           MY_STRING="${MY_STRING//$'\n'/'%0A'}"
