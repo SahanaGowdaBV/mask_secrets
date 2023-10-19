@@ -39,7 +39,11 @@ jobs:
           multiline
           string"
           echo "$DATA"
-          echo "::set-output name=MY_STRING::$DATA"
+          DATA="${DATA//'%'/'%25'}"
+          DATA="${DATA//$'\n'/'%0A'}"
+          DATA="${DATA//$'\r'/'%0D'}"
+          echo "::set-output name=content::$DATA"
+          echo "::set-output name=DATA::$DATA"
       - name: display string
         run: |
-          echo "The string is: ${{ steps.create-string.outputs.MY_STRING }}"
+          echo "The string is: ${{ steps.create-string.outputs.DATA }}"
