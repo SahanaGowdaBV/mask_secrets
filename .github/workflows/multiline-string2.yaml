@@ -8,8 +8,10 @@ jobs:
     steps:
       - name: create string
         run: |
-          DATA=testing
-          cat $DATA
+          DATA="testing
+          multiline 
+          string"
+          echo "$DATA"
       #     MY_STRING=$(cat << EOF
       #     first line
       #     second line
