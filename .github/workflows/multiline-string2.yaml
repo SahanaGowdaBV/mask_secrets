@@ -1,6 +1,32 @@
+# name: multiline
+
+# on: [ workflow_dispatch, push ]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: create string
+#         run: |
+#           DATA="testing
+#           multiline 
+#           string"
+#           echo "$DATA"
+#           MY_STRING=$(cat << EOF
+#           "$DATA"
+#           EOF
+#           )
+#           echo "MY_STRING<<EOF" >> $GITHUB_ENV
+#           echo "$MY_STRING" >> $GITHUB_ENV
+#           echo "EOF" >> $GITHUB_ENV
+#         id: my_string
+#       - name: display string
+#         run: |
+#           echo "The string is: ${{ env.MY_STRING }}"
+
 name: multiline
 
-on: [ workflow_dispatch, push ]
+on: [workflow_dispatch, push]
 
 jobs:
   build:
@@ -9,17 +35,10 @@ jobs:
       - name: create string
         run: |
           DATA="testing
-          multiline 
+          multiline
           string"
           echo "$DATA"
-          MY_STRING=$(cat << EOF
-          "$DATA"
-          EOF
-          )
-          echo "MY_STRING<<EOF" >> $GITHUB_ENV
-          echo "$MY_STRING" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-        id: my_string
+          echo "::set-output name=MY_STRING::$DATA"
       - name: display string
         run: |
-          echo "The string is: ${{ env.MY_STRING }}"
+          echo "The string is: ${{ steps.create-string.outputs.MY_STRING }}"
