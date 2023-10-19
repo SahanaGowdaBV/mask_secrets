@@ -9,9 +9,6 @@ jobs:
       - name: create string
         run: |
           DATA=testing
-          the
-          multiline string 
-          concpt
           cat $DATA
       #     MY_STRING=$(cat << EOF
       #     first line
