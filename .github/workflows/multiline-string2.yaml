@@ -9,9 +9,12 @@ jobs:
       - name: create string
         id: create-string
         run: |
-          DATA='''testing
-          multiline
-          string'''
+          DATA=$(cat <<EOF
+testing
+multiline
+string
+EOF
+)
           echo "$DATA"
           DATA="${DATA//'%'/'%25'}"
           DATA="${DATA//$'\n'/'%0A'}"
@@ -21,6 +24,7 @@ jobs:
       - name: display string
         run: |
           echo "The string is: ${{ steps.create-string.outputs.DATA }}"
+
 
 # name: multiline
 
