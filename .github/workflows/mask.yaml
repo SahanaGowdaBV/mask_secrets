@@ -10,8 +10,6 @@ jobs:
           echo "SECRETS=$SECRETS" | tee -a >> $GITHUB_OUTPUT
           # echo "::set-output name=the_secret::$((RANDOM))"
       - id: sets-a-secret
-        env: 
-          SECRETS: ${{ steps.init.outputs.SECRETS }}
         run: |
             echo "::add-mask::$SECRETS"
 
