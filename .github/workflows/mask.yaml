@@ -16,7 +16,7 @@ jobs:
             echo "::add-mask::$SECRETS"
 
       - run: |
-          echo "the secret number is ${{ steps.sets-a-secret.outputs.SECRETS }}"  
+          echo "the secret number is ${{ steps.init.outputs.SECRETS }}"  
 
             
 
