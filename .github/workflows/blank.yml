@@ -1,3 +1,4 @@
+name: CI
 on: 
   workflow_dispatch:
 jobs:
@@ -11,4 +12,17 @@ jobs:
           echo "::set-output name=secret-number::$the_secret"
       - run: |
           echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"  
+
+      - run: |
+          DATA="testing"'
+          echo "DATA: $DATA"
+
+      - run: echo "::add-mask::$DATA"
+
+      - run: |
+          echo "your secret token is $MY_SECRET_TOKEN"
+          echo "DATA=$DATA" >> $GITHUB_OUTPUT
+
+      
+          
 
