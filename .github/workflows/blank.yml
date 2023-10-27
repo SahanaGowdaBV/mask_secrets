@@ -28,7 +28,7 @@ jobs:
         run: |
           DATA="testing"
           echo "$DATA"
-          echo "DATA=$DATA" >> $GITHIUB_OUTPUT
+          echo "DATA=$DATA" >> $GITHUB_OUTPUT
           echo "::add-mask::${{ secrets.MY_SECRET_TOKEN }}"
       - name: Echo a secret  
         run: echo "your secret token is $DATA"
