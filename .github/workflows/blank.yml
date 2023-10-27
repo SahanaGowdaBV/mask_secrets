@@ -20,7 +20,7 @@ jobs:
       - run: echo "::add-mask::$DATA"
 
       - run: |
-          echo "your secret token is $MY_SECRET_TOKEN"
+          echo "your secret token is $DATA"
           echo "DATA=$DATA" >> $GITHUB_OUTPUT
 
       
