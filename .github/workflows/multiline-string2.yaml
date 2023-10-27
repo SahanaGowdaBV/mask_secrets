@@ -10,14 +10,11 @@ jobs:
         id: create-string
         run: |
           DATA="testing\nmultiline\nstring"
-          echo -e "$DATA"
-          DATA="${DATA//'%'/'%25'}"
-          DATA="${DATA//$'\n'/'%0A'}"
-          DATA="${DATA//$'\r'/'%0D'}"
-          echo "DATA=$DATA" | tee -a $GITHUB_ENV
+          echo -e "DATA=$DATA" >> $GITHUB_ENV
       - name: display string
         run: |
-          echo "The string is: ${{ env.DATA }}"
+          echo -e "The string is: ${{ env.DATA }}"
+
 
 
 
