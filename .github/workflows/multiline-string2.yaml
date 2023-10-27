@@ -9,11 +9,15 @@ jobs:
       - name: create string
         id: create-string
         run: |
-          DATA="testing\nmultiline\nstring"
-          echo -e "DATA=$DATA" >> $GITHUB_ENV
+          DATA="testing
+multiline
+string"
+          echo "DATA:::$DATA:::"
       - name: display string
         run: |
-          echo -e "The string is: ${{ env.DATA }}"
+          echo "The string is:"
+          echo "${{ steps.create-string.outputs.DATA }}"
+
 
 
 
