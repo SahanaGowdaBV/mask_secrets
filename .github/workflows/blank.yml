@@ -15,14 +15,13 @@ jobs:
 
       - run: |
           DATA="testing"
-          echo "DATA: $DATA"
+          echo "DATA=$DATA" >> $GITHUB_OUTPUT
 
-      - run: echo "::add-mask::$DATA"
+      - run: echo "::add-mask::$DATA" 
 
       - run: |
-          DATA="testing"
           echo "your secret token is $DATA"
-          echo "DATA=$DATA" >> $GITHUB_OUTPUT
+          
 
       
           
