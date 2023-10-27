@@ -1,0 +1,24 @@
+on:
+  push:
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - id: init
+        run: |
+          SECRETS=$((RANDOM))
+          echo "SECRETS=$SECRETS" | tee -a >> $GITHUB_OUTPUT
+          # echo "::set-output name=the_secret::$((RANDOM))"
+      - id: sets-a-secret
+        env: 
+          SECRETS: ${{ steps.init.outputs.the_secret }}
+        run: |
+          local_secret="${{ steps.init.outputs.SECRETS }}"
+          echo "::add-mask::$SECRETSt"
+          echo "::set-output name=secret-number::$local_secret"
+          the_secret=$((RANDOM))
+          echo "::add-mask::$the_secret"
+          echo "::set-output name=secret-number::$the_secret"
+      - run: |
+          echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"     
+          echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"  
