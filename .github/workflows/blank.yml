@@ -5,25 +5,33 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - id: sets-a-secret
-        run: |
-          the_secret=$((RANDOM))
-          echo "::add-mask::$the_secret"
-          echo "::set-output name=secret-number::$the_secret"
-      - run: |
-          echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"  
+      # - id: sets-a-secret
+      #   run: |
+      #     the_secret=$((RANDOM))
+      #     echo "::add-mask::$the_secret"
+      #     echo "::set-output name=secret-number::$the_secret"
+      # - run: |
+      #     echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"  
 
-      - run: |
+      # - run: |
+      #     DATA="testing"
+      #     echo "$DATA"
+
+      #     echo "DATA=$DATA" >> $GITHUB_OUTPUT
+
+      # - run: echo "::add-mask::$DATA" 
+
+      # - run: |
+      #     echo "your secret token is $DATA"
+
+      - name: Add Mask
+        run: |
           DATA="testing"
           echo "$DATA"
-
-          echo "DATA=$DATA" >> $GITHUB_OUTPUT
-
-      - run: echo "::add-mask::$DATA" 
-
-      - run: |
-          echo "your secret token is $DATA"
-          
+          echo "DATA=$DATA" >> $GITHIUB_OUTPUT
+          echo "::add-mask::${{ secrets.MY_SECRET_TOKEN }}"
+      - name: Echo a secret  
+        run: echo "your secret token is $DATA"
 
       
           
