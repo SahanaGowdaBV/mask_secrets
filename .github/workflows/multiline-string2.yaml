@@ -42,8 +42,8 @@ jobs:
           DATA="${DATA//'%'/'%25'}"
           DATA="${DATA//$'\n'/'%0A'}"
           DATA="${DATA//$'\r'/'%0D'}"
-          echo "DATA=$DATA" | tee -a >> $GITHUB_OUTPUT
-          # echo "::set-output name=DATA::$DATA"
+          # echo "DATA=$DATA" | tee -a >> $GITHUB_OUTPUT
+          echo "::set-output name=DATA::$DATA"
       - name: display string
         run: |
           echo "The string is: ${{ steps.create-string.outputs.DATA }}"
