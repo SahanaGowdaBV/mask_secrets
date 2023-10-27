@@ -9,21 +9,16 @@ jobs:
       - name: create string
         id: create-string
         run: |
-          DATA=$(cat <<EOF
-testing
-multiline
-string
-EOF
-)
-          echo "$DATA"
+          DATA="testing\nmultiline\nstring"
+          echo -e "$DATA"
           DATA="${DATA//'%'/'%25'}"
           DATA="${DATA//$'\n'/'%0A'}"
           DATA="${DATA//$'\r'/'%0D'}"
-          echo "DATA=$DATA" | tee -a >> $GITHUB_OUTPUT
-          #echo "::set-output name=DATA::$DATA"
+          echo "DATA=$DATA" | tee -a $GITHUB_ENV
       - name: display string
         run: |
-          echo "The string is: ${{ steps.create-string.outputs.DATA }}"
+          echo "The string is: ${{ env.DATA }}"
+
 
 
 # name: multiline
