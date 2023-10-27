@@ -14,7 +14,9 @@ jobs:
           echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"  
 
       - run: |
-          DATA=$(testing)
+          DATA="testing"
+          echo "$DATA"
+
           echo "DATA=$DATA" >> $GITHUB_OUTPUT
 
       - run: echo "::add-mask::$DATA" 
